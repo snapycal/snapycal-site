@@ -1,0 +1,170 @@
+<!doctype html><html lang='en'><head><title>Hairby Maha — SnapyCal</title>  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SnapyCal — Book trusted local pros in minutes.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{ --lav:#F6F2FF; --ink:#0f172a; }
+    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif; }
+    .card{ background:white; border:1px solid rgb(229 231 235); box-shadow: 0 1px 2px rgba(16,24,40,.06); }
+    .container{ max-width: 1120px; margin-inline:auto; }
+    .link{ color:#111827; }
+    .link:hover{ text-decoration:underline; }
+    .btn{ background:#111827; color:#fff; padding:.6rem 1rem; border-radius:.75rem; font-weight:600; }
+  </style>
+</head><body class='bg-[var(--lav)]'>  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b">
+    <div class="container px-4 py-3 flex items-center gap-6">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/assets/logo.png" alt="SnapyCal" class="w-9 h-9 rounded">
+        <span class="text-lg font-bold">SnapyCal</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-5 text-[15px]">
+        <a class="link" href="/">Home</a>
+        <a class="link" href="/pricing/">Pricing</a>
+        <a class="link" href="/join/">List Your Business</a>
+        <a class="link" href="/demo/">Demo</a>
+      </nav>
+      <div class="ml-auto flex items-center gap-3">
+        <a class="link" href="/login/">Login</a>
+        <a class="btn" href="/join/">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+<section class="container px-4 py-4 text-sm text-slate-600">
+  <a class="link" href="/">SnapyCal</a> › <a class="link" href="/windsor/">Windsor</a> › Hairby Maha
+</section>
+
+<section class="container px-4 grid lg:grid-cols-3 gap-6">
+  <!-- Left: gallery + sections -->
+  <div class="lg:col-span-2 space-y-6">
+    <!-- Gallery -->
+    <div class="card rounded-2xl p-4 grid md:grid-cols-3 gap-3">
+      <img src="/assets/gallery1.png" class="rounded-xl border md:col-span-2 w-full h-64 object-cover" alt="Cover">
+      <div class="space-y-3">
+        <img src="/assets/gallery2.png" class="rounded-xl border w-full h-30 object-cover" alt="Gallery 1">
+        <img src="/assets/gallery3.png" class="rounded-xl border w-full h-30 object-cover" alt="Gallery 2">
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="card rounded-2xl p-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold">Services</h2>
+        <a class="btn" href="https://snapycal.com/book/hairby-maha">Book Now</a>
+      </div>
+      <div id="services" class="mt-4"></div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="card rounded-2xl p-4">
+      <h2 class="text-xl font-bold mb-3">Reviews</h2>
+      <div id="reviews" class="grid md:grid-cols-2 gap-3"></div>
+    </div>
+
+    <!-- Map -->
+    <div class="card rounded-2xl overflow-hidden">
+      <iframe id="map" class="w-full h-80" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- Right: sidebar -->
+  <aside class="space-y-6">
+    <div class="card rounded-2xl p-4">
+      <div class="flex items-start gap-3">
+        <img src="/assets/gallery1.png" class="w-16 h-16 rounded-xl border object-cover" alt="Logo">
+        <div class="flex-1">
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl font-bold">Hairby Maha</h1>
+            <span class="text-emerald-700 text-xs bg-emerald-100 px-2 py-0.5 rounded">Verified</span>
+          </div>
+          <div class="text-slate-600 text-sm">⭐ 4.9 · 187 reviews</div>
+          <div class="text-slate-600 text-sm mt-1">📍 10631 Tecumseh Road East, Windsor, ON</div>
+          <div class="text-slate-600 text-sm">⏱️ Closed · opens Wed at 10:00am</div>
+        </div>
+      </div>
+      <a class="btn mt-4 w-full" href="https://snapycal.com/book/hairby-maha">Book now</a>
+    </div>
+
+    <div class="card rounded-2xl p-4">
+      <h3 class="font-semibold">Team</h3>
+      <div class="mt-2 flex items-center gap-3">
+        <img src="/assets/team-maha.png" class="w-12 h-12 rounded-full object-cover" alt="Maha">
+        <div class="flex-1">
+          <div class="font-medium">Maha</div>
+          <div class="text-sm text-slate-600">Lead Stylist</div>
+        </div>
+        <a class="btn" href="https://snapycal.com/book/hairby-maha?pro=maha">Book Me</a>
+      </div>
+    </div>
+
+    <div class="card rounded-2xl p-4">
+      <h3 class="font-semibold mb-2">Opening hours</h3>
+      <ul id="hours" class="text-sm"></ul>
+    </div>
+
+    <div class="card rounded-2xl p-4 text-center">
+      <div class="text-sm text-slate-600">Scan to book</div>
+      <img id="qr" class="w-40 h-40 rounded-xl mx-auto my-2 border" alt="QR">
+      <a class="link" href="https://snapycal.com/book/hairby-maha">Copy booking link</a>
+    </div>
+  </aside>
+</section>
+
+<script src="./data.js"></script>
+<script>
+ const D = window.SNAPYCAL_PAGE;
+ document.getElementById('map').src = D.business.mapEmbed;
+ const hours = document.getElementById('hours');
+ D.hours.forEach(([d,h])=>{hours.insertAdjacentHTML('beforeend',`<li class='flex justify-between py-1'><span>${d}</span><span class='font-medium'>${h}</span></li>`);});
+ const services = document.getElementById('services');
+ D.categories.forEach(cat=>{
+   services.insertAdjacentHTML('beforeend', `<div class='mt-4'><div class='font-semibold mb-2'>${cat.name}</div></div>`);
+   const wrap = document.createElement('div'); wrap.className='space-y-2';
+   cat.items.forEach(it=>{
+     wrap.insertAdjacentHTML('beforeend', `<div class='flex items-center justify-between p-3 border rounded-xl'>
+       <div><div class='font-medium'>${it.name}</div><div class='text-sm text-slate-500'>${it.duration}</div></div>
+       <div class='flex items-center gap-3'><div class='font-semibold'>${it.price}</div><a class='btn' href='${D.business.bookingUrl}'>Book</a></div>
+     </div>`);
+   });
+   services.appendChild(wrap);
+ });
+ // QR
+ document.getElementById('qr').src = "https://chart.googleapis.com/chart?cht=qr&chs=220x220&chl="+encodeURIComponent(D.business.bookingUrl);
+</script>
+  <footer class="border-t mt-16">
+    <div class="container px-4 py-10 grid md:grid-cols-4 gap-6 text-sm">
+      <div>
+        <div class="font-semibold mb-2">SnapyCal</div>
+        <div class="text-slate-600">Book trusted local pros in minutes.</div>
+      </div>
+      <div>
+        <div class="font-semibold mb-2">For Businesses</div>
+        <ul class="space-y-1">
+          <li><a class="link" href="/join/">List Your Business</a></li>
+          <li><a class="link" href="/pricing/">Pricing</a></li>
+          <li><a class="link" href="/demo/">Book a Demo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold mb-2">Legal</div>
+        <ul class="space-y-1">
+          <li><a class="link" href="/terms/">Terms</a></li>
+          <li><a class="link" href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold mb-2">Connect</div>
+        <ul class="space-y-1">
+          <li><a class="link" href="https://instagram.com" target="_blank">Instagram</a></li>
+          <li><a class="link" href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t">
+      <div class="container px-4 py-6 text-xs text-slate-500">
+        © 2025 SnapyCal — Built in Windsor, Ontario 🇨🇦
+      </div>
+    </div>
+  </footer>
+</body></html>
